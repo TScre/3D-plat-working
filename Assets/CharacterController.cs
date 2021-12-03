@@ -24,9 +24,13 @@ public class CharacterController : MonoBehaviour
     public float maxSprint = 5.0f;
     float sprintTimer;
 
+    Animator myAnim;
+
     // Start is called before the first frame update
     void Start()
     {
+        myAnim = GetComponentInChildren<Animator>();
+
         cam = GameObject.Find("Main Camera");
         myRidgidbody = GetComponent<Rigidbody>();
 
@@ -59,6 +63,8 @@ public class CharacterController : MonoBehaviour
 
         Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
         myRidgidbody.velocity = new Vector3(newVelocity.x, myRidgidbody.velocity.y, newVelocity.z);
+
+        myAnim.SetFloat("speed", newVelocity.magnitude);
 
         rotation = rotation + Input.GetAxis("Mouse X") * rotationSpeed;
         transform.rotation = Quaternion.Euler(new Vector3(0.0f, rotation, 0.0f));
