@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    
+     private void OnTriggerEnter(Collider other)
+     {
+         Destory(gameObject);
+     }
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
