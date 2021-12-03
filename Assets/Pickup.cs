@@ -7,7 +7,9 @@ public class Pickup : MonoBehaviour
     
      private void OnTriggerEnter(Collider other)
      {
-         Destory(gameObject);
+         if (other.gameObject.tag == "Player"){
+         Destroy(gameObject);
+         }
      }
         
 }
